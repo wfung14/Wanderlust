@@ -1,4 +1,5 @@
 const { Schema } = require('mongoose')
+const noteSchema = require('./note')
 
 const locationSchema = new Schema ({
   name: {
@@ -15,7 +16,8 @@ const locationSchema = new Schema ({
   lodging: {
     type: String,
     required: true
-  }
+  },
+  notes: [noteSchema]
 })
 
 module.exports = locationSchema
