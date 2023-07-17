@@ -2,7 +2,7 @@ const router = require('express').Router()
 const controller = require('../controllers/locations')
 const middleware = require('../middleware')
 
-router.get('/', controller.GetPosts)
+router.get('/', controller.GetLocations)
 router.post(
   '/',
   middleware.stripToken,
