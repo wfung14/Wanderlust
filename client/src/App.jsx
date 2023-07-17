@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
+import Nav from './components/Nav/Nav'
 import { CheckSession } from './services/Auth'
+import { Route, Routes } from 'react-router'
 
 import './App.css'
 
