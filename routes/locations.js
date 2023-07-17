@@ -1,18 +1,25 @@
-const express = require('express');
-const router = express.Router();
-const locationsCtrl = require('../controllers/locations')
+const router = require('express').Router()
+const controller = require('../controllers/locations')
+const middleware = require('../middleware')
 
-// GET /locations/new
-router.get('/new', locationsCtrl.new);
+router.get('/', controller.GetPosts)
+router.post(
+  '/',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.CreateLocation
+)
+router.put(
+  '/:post_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.UpdateLocation
+)
+router.delete(
+  '/:post_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.DeleteLocation
+)
 
-// POST /locations
-router.post('/', locationsCtrl.create);
-
-// GET route for /locations
-router.get('/', locationsCtrl.index);
-
-// DELETE /comments
-router.delete('/locations/:id', locationsCtrl.delete);
-
-module.exports = router;
-
+module.exports = router
