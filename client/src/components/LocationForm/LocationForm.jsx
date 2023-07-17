@@ -1,4 +1,5 @@
-export default function LocationForm() {
+const LocationForm = () => {
+
   return (
     <>
       <div className="form-container">
@@ -25,3 +26,5 @@ export default function LocationForm() {
     </>
   )
 }
+
+export default LocationForm
