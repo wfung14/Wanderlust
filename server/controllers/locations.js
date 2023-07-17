@@ -1,6 +1,6 @@
 const Location = require('../models/location')
 const Note = require('../models/notes')
-const Itinerary = require('../models/intinerary')
+const Itinerary = require('../models/itinerary')
 
 const newLocation = (req, res) => {
   res.render('locations/new', { title: 'Add Location', errorMsg: ''});
@@ -32,9 +32,23 @@ const deleteNote = (req, res, next) => {
   });
 }
 
+const showItinerary = async (req, res) => {
+  const location = await Location.findById(req.params.id).populate('itineraries');
+  const itineraries = await Itinerary.find({ _id: { $nin: location.itineraries } }).sort('name');
+  res.render('locations/show', { title: 'Location Detail', location, itineraries });
+}
+
+const showNote = async (req, res) => {
+  const location = await Location.findById(req.params.id).populate('notes');
+  const notes = await Note.find({ _id: { $nin: location.notes } }).sort('name');
+  res.render('locations/show', { title: 'Location Detail', location, notes });
+}
+
 module.exports = {
   new: newLocation,
   index,
   create,
-  delete: deleteNote
+  delete: deleteNote,
+  showItinerary,
+  showNote
 };
