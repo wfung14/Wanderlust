@@ -1,7 +1,7 @@
 import { useState } from "react"
-import LocationForm from "../../components/LocationForm/LocationForm";
+import LocationForm from "../components/LocationForm/LocationForm";
 
-export default function LocationPage() {
+const Location = () => {
 
   const [showForm, setShowForm] = useState(false)
 
@@ -17,3 +17,5 @@ export default function LocationPage() {
     
   )
 }
+
+export default Location

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
+import Home from './pages/Home'
 import { CheckSession } from './services/Auth'
 
 import './App.css'
@@ -27,23 +28,18 @@ const App = () => {
   }, [])
 
   return (
-    <main className="App">
-      {
-        user ?
-        <>
-          <NavBar user={user} setUser={setUser} />
-          <Routes >
-            <Route path="/locations" element={<Locations />} />
-            <Route path="/*" element={<Navigate to="/locations" />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/signin" element={<SignIn setUser={setUser} />} />
-          </Routes> 
-        </> 
-        :
-        <AuthPage setUser={setUser}/>
-      }
-    </main>
-  );
+    <div className="App">
+      <Nav user={user} handleLogout={handleLogOut} />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/locations" element={<Location />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </main>
+    </div>
+  )
 }
 
 export default App
