@@ -13,10 +13,8 @@ const userSchema = new Schema(
       required: true,
       unique: true
     },
-    password: {
+    passwordDigest: {
       type: String,
-      required: true,
-      min: 4
     }
   }
 )

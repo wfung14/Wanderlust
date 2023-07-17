@@ -17,7 +17,7 @@ const comparePassword = async (storedPassword, password) => {
 
 const stripToken = (req, res, next) => {
   try {
-    const token = req.headers["authrorization"].split("")[1]
+    const token = req.headers["authrorization"].split(" ")[1]
     if (token) {
       res.locals.token = token
       return next()
