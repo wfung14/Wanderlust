@@ -8,7 +8,7 @@ const locationSchema = new Schema(
       required: true
     },
     dates: {
-      type: Date,
+      type: String,
       required: true
     },
     transportation: {
