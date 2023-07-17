@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(Express.urlencoded({ extended: false }))
 
 app.use("/auth", AuthRouter)
-app.use("/locations", location)
+app.use("/locations", locations)
 
 app.use("/", (req, res) => {
   res.send(`Connected!`)
