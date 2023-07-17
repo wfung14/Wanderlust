@@ -13,5 +13,8 @@ router.post('/', locationsCtrl.create);
 // GET route for /locations
 router.get('/', locationsCtrl.index);
 
+// DELETE /comments
+router.delete('/locations/:id', locationsCtrl.delete);
+
 module.exports = router;
 
