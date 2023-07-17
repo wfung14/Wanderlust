@@ -13,7 +13,7 @@ const itinerarySchema = new Schema(
     }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 )
 
