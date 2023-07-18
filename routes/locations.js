@@ -10,13 +10,13 @@ router.post(
   controller.CreateLocation
 )
 router.put(
-  '/:post_id',
+  '/:location_id',
   middleware.stripToken,
   middleware.verifyToken,
   controller.UpdateLocation
 )
 router.delete(
-  '/:post_id',
+  '/:location_id',
   middleware.stripToken,
   middleware.verifyToken,
   controller.DeleteLocation

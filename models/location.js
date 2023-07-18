@@ -3,11 +3,15 @@ const Schema = mongoose.Schema
 
 const locationSchema = new Schema(
   {
-    name: {
+    location: {
       type: String,
       required: true
     },
-    dates: {
+    from: {
+      type: String,
+      required: true
+    },
+    to: {
       type: String,
       required: true
     },

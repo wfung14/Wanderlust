@@ -20,7 +20,7 @@ const CreateLocation = async (req, res) => {
 
 const UpdateLocation = async (req, res) => {
   try {
-    const location = await Location.findByIdAndUpdate(req.params.location_id, req.body)
+    const location = await Location.findByIdAndUpdate(req.params.location_id, req.body, {new:true})
     res.send(location)
   } catch (error) {
     throw error
