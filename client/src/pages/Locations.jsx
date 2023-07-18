@@ -10,8 +10,7 @@ const Location = () => {
       <h2>My Travels</h2>
     
       <button onClick={() => setShowForm(!showForm)}>Add Location</button> 
-    
-    {showForm ? (<LocationForm/>) : " "}
+      {showForm ? (<LocationForm/>) : " "}
 
     </>
     

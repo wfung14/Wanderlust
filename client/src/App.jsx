@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Register from './pages/Register'
-import SignIn from './pages/LogIn'
+import LogIn from './pages/LogIn'
 import Home from './pages/Home'
 import Nav from './components/Nav/Nav'
 import Locations from './pages/Locations'
@@ -37,7 +37,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/locations" element={<Locations />} />
-          <Route path="/signin" element={<SignIn setUser={setUser} />} />
+          <Route path="/login" element={<LogIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </main>

@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className='HomeContainer'>
       <h2>Not all who wander are lost.</h2>
-      <button onClick={() => navigate('/signin')}>Begin traveling</button>
+      <button onClick={() => navigate('/login')}>Begin traveling</button>
     </div>
   )
 }
