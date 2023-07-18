@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import './LocationForm.css'
+import { AddLocation} from '../../services/location'
 
 const LocationForm = ({getLocations}) => {
   const initialState = {
@@ -15,7 +16,7 @@ const LocationForm = ({getLocations}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await axios.post('http://localhost:3001/locations', locationFormState)
+    await AddLocation(locationFormState)
     setLocationFormState(initialState)
     getLocations()
   }
@@ -47,7 +48,7 @@ const LocationForm = ({getLocations}) => {
       >
       </input>
 
-      <label htmlFor="from">To:</label>
+      <label htmlFor="to">To:</label>
       <input
         type="text"
         id="to"
