@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { SignInUser } from '../services/Auth'
+import { LogInUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 
-const SignIn = ({ setUser }) => {
+const LogIn = ({ setUser }) => {
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({ email: '', password: '' })
@@ -13,7 +13,7 @@ const SignIn = ({ setUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const payload = await SignInUser(formValues)
+    const payload = await LogInUser(formValues)
     setFormValues({ email: '', password: '' })
     setUser(payload)
     navigate('/locations')
@@ -45,7 +45,7 @@ const SignIn = ({ setUser }) => {
             />
           </div>
           <button disabled={!formValues.email || !formValues.password}>
-            Sign In
+            Log In
           </button>
         </form>
       </div>
@@ -53,4 +53,4 @@ const SignIn = ({ setUser }) => {
   )
 }
 
-export default SignIn
+export default LogIn

@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom'
+import './Home.css'
+
 
 const Home = () => {
   let navigate = useNavigate()
 
   return (
-    <div>
-      <h1>Welcome</h1>
-      <button onClick={() => navigate('/signin')}>Click Here To Begin</button>
+    <div className='HomeContainer'>
+      <h2>Not all who wander are lost.</h2>
+      <button onClick={() => navigate('/signin')}>Begin traveling</button>
     </div>
   )
 }

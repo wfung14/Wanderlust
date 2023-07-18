@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import './Nav.css'
 
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
@@ -26,7 +27,7 @@ const Nav = ({ user, handleLogOut }) => {
     <header>
       <Link to="/">
         <div>
-          <h1>Nav Bar</h1>
+          <h1>Wanderlust</h1>
         </div>
       </Link>
       {user ? userOptions : publicOptions}

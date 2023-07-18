@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Register from './pages/Register'
-import SignIn from './pages/SignIn'
+import SignIn from './pages/LogIn'
 import Home from './pages/Home'
 import Nav from './components/Nav/Nav'
 import Locations from './pages/Locations'
