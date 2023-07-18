@@ -30,11 +30,9 @@ const createToken = (payload) => {
 
 const stripToken = (req, res, next) => {
   try {
-    console.log(req.headers)
     const token = req.headers['authorization'].split(' ')[1]
     // Gets the token from the request headers {authorization: Bearer Some-Token}
     // Splits the value of the authorization header
-    console.log(token)
     if (token) {
       res.locals.token = token
       // If the token exists we add it to the request lifecycle state
