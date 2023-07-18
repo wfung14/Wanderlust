@@ -26,15 +26,15 @@ const Location = () => {
         <h2>My Travels</h2>
 
         <h1>Trips:</h1>
-        <a href="/locations_id">
           {locations.map((location) => (
             <div key={location._id}>
+              <a href="/id">
               <h3>Location: {location.location}</h3>
+              </a>
               <p>From: {location.from}</p>
               <p>To: {location.to}</p>
             </div>
           ))}
-        </a>
       </div>
 
       <button onClick={() => setShowForm(!showForm)}>Add Location</button>

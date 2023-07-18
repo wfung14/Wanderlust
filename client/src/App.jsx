@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Nav user={user} handleLogout={handleLogOut} />
+      <Nav user={user} handleLogOut={handleLogOut} />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
