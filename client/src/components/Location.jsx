@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import UpdateLocationForm from './LocationForm/UpdateLocationForm'
 import { Link } from 'react-router-dom'
 
-const Location = (props) => {
+const Location = ({ location, getLocations, handleDelete }) => {
 
-  const location = props.location
-  const getLocations = props.getLocations
+
 
   const [showForm, setShowForm] = useState(false)
 

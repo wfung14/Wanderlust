@@ -21,7 +21,12 @@ const locationSchema = new Schema(
     lodging: {
       type: String,
       required: true
-    }
+    },
+    activities: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Itinerary',
+      required: false
+    }]
   },
   {
     timestamps: true

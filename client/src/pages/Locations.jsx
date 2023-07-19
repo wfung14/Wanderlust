@@ -7,6 +7,7 @@ import Location from '../components/Location'
 const Locations = () => {
   const [locations, setLocations] = useState([])
 
+
   const getLocations = async () => {
     try {
       let res = await axios.get('http://localhost:3001/locations')
@@ -43,8 +44,11 @@ const Locations = () => {
       <div>
         <h1>Trips:</h1>
         {locations.map((location) => (
-          <Location location={location} key={location._id} getLocations = {getLocations} />
+          <Location location={location} handleDelete={handleDelete} key={location._id} getLocations = {getLocations} />
         ))}
+
+
+
       </div>
 
       <button onClick={() => setShowForm(!showForm)}>Add Location</button>

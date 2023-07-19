@@ -1,10 +1,8 @@
 import React from "react"
 import { useState } from "react"
-import axios from 'axios'
-import './ItineraryForm.css'
 import { AddItinerary } from '../../services/itinerary'
 
-const ItineraryForm = () => {
+const ItineraryForm = ({ id, setSubmitted, submitted }) => {
 
   const initialState = {
     activity: '',
@@ -13,12 +11,14 @@ const ItineraryForm = () => {
 
   const [itineraryFormState, setItineraryFormState] = useState(initialState)
 
+
+
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(event)
-    await addItinerary(itineraryFormState)
+    await AddItinerary(itineraryFormState, id)
     setItineraryFormState(initialState)
-    getItinerarys()
+    setSubmitted(!submitted)
+    // getItineraries()
   }
 
   const handleChange = (event) => {
@@ -27,6 +27,8 @@ const ItineraryForm = () => {
       [event.target.id]: event.target.value
     })
   }
+
+
 
   return (
     <form onSubmit={handleSubmit}>

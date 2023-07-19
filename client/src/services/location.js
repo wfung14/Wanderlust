@@ -26,3 +26,7 @@ export const UpdateLocation = async (data) => {
     throw error
   }
 }
+
+export const getLocations = async () => {
+  
+}
