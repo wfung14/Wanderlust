@@ -17,3 +17,12 @@ export const DeleteLocation = async (id) => {
     throw error
   }
 }
+
+export const UpdateLocation = async (data) => {
+  try {
+    const res = await Client.put(`/locations/${data.id}`, data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
