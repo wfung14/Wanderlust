@@ -22,6 +22,14 @@ const deleteItinerary = (req, res, next) => {
   });
 }
 
+const getItinerary = (req, res, next) => {
+  try {
+    const intinerarys = await ItineraryForm.findById(req.params.)
+  }
+
+  `locations/${data.id}/itineraries`
+}
+
 module.exports = {
   create,
   delete: deleteItinerary

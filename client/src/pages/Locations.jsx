@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import LocationForm from '../components/LocationForm/LocationForm'
 import axios from 'axios'
 import { DeleteLocation } from '../services/location'
+import { Link } from 'react-router-dom'
 
 const Location = () => {
   const [locations, setLocations] = useState([])
@@ -18,7 +19,7 @@ const Location = () => {
   const handleDelete = async (id) => {
     try {
       let res = await DeleteLocation(id)
-      if (res.status === 'Ok'){
+      if (res.status === 'Ok') {
         console.log(locations)
         let newLocations = locations.filter((location) => {
           return location._id !== id
@@ -31,8 +32,6 @@ const Location = () => {
     }
   }
 
-
-
   useEffect(() => {
     getLocations()
   }, [])
@@ -42,22 +41,29 @@ const Location = () => {
   return (
     <>
       <div>
-
         <h1>Trips:</h1>
-          {locations.map((location) => (
-            <div key={location._id}>
-              <a href="/id">
+        {locations.map((location) => (
+          <div key={location._id}>
+            <Link to={`/locations/${location._id}`}>
               <h3>Location: {location.location}</h3>
-              </a>
-              <p>From: {location.from}</p>
-              <p>To: {location.to}</p>
-              <button onClick={() => {handleDelete(location._id)}} id="delete-button">Delete Trip</button>
-            </div>
-          ))}
+            </Link>
+
+            <p>From: {location.from}</p>
+            <p>To: {location.to}</p>
+            <button
+              onClick={() => {
+                handleDelete(location._id)
+              }}
+              id="delete-button"
+            >
+              Delete Trip
+            </button>
+          </div>
+        ))}
       </div>
 
       <button onClick={() => setShowForm(!showForm)}>Add Location</button>
-      {showForm ? <LocationForm getLocations={getLocations}/> : ' '}
+      {showForm ? <LocationForm getLocations={getLocations} /> : ' '}
     </>
   )
 }

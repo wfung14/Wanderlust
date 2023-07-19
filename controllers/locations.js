@@ -38,9 +38,19 @@ const DeleteLocation = async (req, res) => {
   }
 }
 
+const GetLocation = async (req, res) => {
+  try {
+    const locations = await Location.findById(req.params.location_id)
+    res.send(locations)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetLocations,
   CreateLocation,
   UpdateLocation,
-  DeleteLocation
+  DeleteLocation,
+  GetLocation
 }

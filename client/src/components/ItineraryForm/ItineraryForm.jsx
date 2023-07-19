@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react"
 import axios from 'axios'
 import './ItineraryForm.css'
+import { AddItinerary } from '../../services/itinerary'
 
 const ItineraryForm = () => {
 
@@ -14,7 +15,8 @@ const ItineraryForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await axios.post('http://localhost:3001/locations/:id/itineraries', itineraryFormState)
+    console.log(event)
+    await addItinerary(itineraryFormState)
     setItineraryFormState(initialState)
     getItinerarys()
   }
@@ -46,7 +48,7 @@ const ItineraryForm = () => {
         value={itineraryFormState.date}
       />
 
-      <button type="submit">Add location</button>
+      <button type="submit">Add activity</button>
 
     </form>
   )
