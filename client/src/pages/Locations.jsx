@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import LocationForm from '../components/LocationForm/LocationForm'
 import axios from 'axios'
+import { DeleteLocation } from '../services/location'
 
 const Location = () => {
   const [locations, setLocations] = useState([])
@@ -14,6 +15,24 @@ const Location = () => {
     }
   }
 
+  const handleDelete = async (id) => {
+    try {
+      let res = await DeleteLocation(id)
+      if (res.status === 'Ok'){
+        console.log(locations)
+        let newLocations = locations.filter((location) => {
+          return location._id !== id
+        })
+        setLocations(newLocations)
+      }
+      console.log(res)
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+
+
   useEffect(() => {
     getLocations()
   }, [])
@@ -23,7 +42,6 @@ const Location = () => {
   return (
     <>
       <div>
-        <h2>My Travels</h2>
 
         <h1>Trips:</h1>
           {locations.map((location) => (
@@ -33,6 +51,7 @@ const Location = () => {
               </a>
               <p>From: {location.from}</p>
               <p>To: {location.to}</p>
+              <button onClick={() => {handleDelete(location._id)}} id="delete-button">Delete Trip</button>
             </div>
           ))}
       </div>

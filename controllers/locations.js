@@ -28,6 +28,8 @@ const UpdateLocation = async (req, res) => {
 }
 
 const DeleteLocation = async (req, res) => {
+  console.log('===')
+  console.log(req)
   try {
     await Location.deleteOne({ _id: req.params.location_id })
     res.send({ msg: 'Location Deleted', payload: req.params.location_id, status: 'Ok' })
