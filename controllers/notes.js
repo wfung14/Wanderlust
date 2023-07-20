@@ -1,12 +1,29 @@
 const Location = require('../models/location');
+const Note = require('../models/note')
+
+// const create = async (req, res) => {
+//   const location = await Location.findById(req.params.id);
+//   location.notes.push(req.body);
+//   try{
+//     await location.save();
+//   } catch (err) {
+//     res.redirect('/locations/${location._id}')
+//   }
+// }
 
 const create = async (req, res) => {
-  const location = await Location.findById(req.params.id);
-  location.notes.push(req.body);
-  try{
-    await location.save();
+  try {
+  const locationId = await Location.findById(req.params.id)
+  let content = await new Note(req.body)
+  content.save()
+  let location = await Location.findById(locationId)
+  location.notes.push(content._id)
+  await Location.findByIdAndUpdate(locationId, location)
+  return res.send({ content })
   } catch (err) {
-    res.redirect('/locations/${location._id}')
+    res.status(500).json({
+      error: err.message
+    })
   }
 }
 
@@ -22,7 +39,18 @@ const deleteNote = (req, res, next) => {
   });
 }
 
+const getNote = async (req, res) => {
+  console.log(req)
+  try {
+    const note = await Note.findById(req.params.id)
+    res.send(note)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   create,
-  delete: deleteNote
+  delete: deleteNote,
+  get: getNote
 }

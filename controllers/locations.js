@@ -49,7 +49,7 @@ const DeleteLocation = async (req, res) => {
 const GetLocation = async (req, res) => {
   try {
     const locations = await Location.findById(req.params.location_id).populate(
-      'activities'
+      ['activities', 'notes']
     )
     res.send(locations)
   } catch (error) {

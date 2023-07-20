@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import Itinerary from '../components/Itinerary'
 import { getItinerary } from '../services/itinerary'
 
-const LocationDetail = ({locationActivities, setLocationActivities}) => {
+const LocationDetail = ({locationActivities, setLocationActivities, locationNotes, setLocationNotes}) => {
   const [showForm, setShowForm] = useState(false)
 
   const [location, setLocation] = useState([])
@@ -22,12 +22,14 @@ const LocationDetail = ({locationActivities, setLocationActivities}) => {
       let res = await axios.get(`http://localhost:3001/locations/${id}`)
       setLocation(res.data)
       setLocationActivities(res.data.activities)
+      setLocationNotes(res.data.notes)
+      
     } catch (err) {
       console.log(err)
     }
   }
 
-
+console.log(locationNotes)
 
   // const getItineraries = async () => {
   //   try {
@@ -40,6 +42,7 @@ const LocationDetail = ({locationActivities, setLocationActivities}) => {
 
   useEffect(() => {
     getLocations()
+    // getNotes()
   }, [submitted])
 
 
@@ -55,23 +58,29 @@ const LocationDetail = ({locationActivities, setLocationActivities}) => {
       </div>
 
       <div>
-        <h1>Activities:</h1>
+        <h5>Activities:</h5>
         {locationActivities?.map((itinerary) => (
           <div>
-            <h1>{itinerary.activity}</h1>
+            <h6>{itinerary.activity}</h6>
           </div>
-          // <Itinerary
-          //   Itinerary={itinerary}
-          //   key={itinerary._id}
-          //   getItineraries={getItineraries}
-          // />
+
+        )
+        )}
+
+        <h5>Notes:</h5>
+        {locationNotes?.map((note) => (
+          <div>
+            <h6>{note.content}</h6>
+          </div>
         ))}
+        
       </div>
       <button onClick={() => setShowForm(!showForm)}>Add Activity</button>
       {showForm ? <ItineraryForm setSubmitted={setSubmitted} submitted={submitted} id={location._id} /> : ' '}
 
+          
       <button onClick={() => setShowForm(!showForm)}>Add Note</button>
-      {showForm ? <NoteForm id={location._id} /> : ' '}
+      {showForm ? <NoteForm setSubmitted={setSubmitted} submitted={submitted} id={location._id} /> : ' '}
     </>
   )
 }

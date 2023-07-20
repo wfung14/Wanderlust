@@ -2,7 +2,7 @@ import React from "react"
 import { useState } from "react"
 import { AddNote } from "../../services/note"
 
-const NoteForm = () => {
+const NoteForm = ({ id, setSubmitted, submitted }) => {
 
   const initialState = {
     content: ''
@@ -12,10 +12,10 @@ const NoteForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(event)
-    await AddNote(noteFormState)
+    await AddNote(noteFormState, id)
     setNoteFormState(initialState)
-    getNotes()
+    setSubmitted(!submitted)
+    // getNotes()
   }
 
   const handleChange = (event) => {
@@ -31,7 +31,7 @@ const NoteForm = () => {
       <label htmlFor="Note">Note:</label>
       <input
         type="text"
-        id="note"
+        id="content"
         onChange={handleChange}
         defaultValue={noteFormState.content}
       >

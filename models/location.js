@@ -26,6 +26,11 @@ const locationSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Itinerary',
       required: false
+    }],
+    notes: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Note',
+      required: false
     }]
   },
   {

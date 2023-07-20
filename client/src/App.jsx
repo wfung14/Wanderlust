@@ -16,6 +16,8 @@ const App = () => {
 
   const [locationActivities, setLocationActivities] = useState([])
 
+  const [locationNotes, setLocationNotes] = useState([])
+
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
@@ -40,7 +42,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/locations" element={<Locations />} />
-          <Route path="/locations/:id" element={<LocationDetail locationActivities={locationActivities} setLocationActivities={setLocationActivities}/>} />
+          <Route path="/locations/:id" element={<LocationDetail locationActivities={locationActivities} setLocationActivities={setLocationActivities} locationNotes={locationNotes} setLocationNotes={setLocationNotes}/>}/>
           <Route path="/login" element={<LogIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
         </Routes>
