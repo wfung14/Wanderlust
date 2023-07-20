@@ -15,7 +15,6 @@ const NoteForm = ({ id, setSubmitted, submitted }) => {
     await AddNote(noteFormState, id)
     setNoteFormState(initialState)
     setSubmitted(!submitted)
-    // getNotes()
   }
 
   const handleChange = (event) => {

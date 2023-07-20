@@ -18,7 +18,6 @@ const ItineraryForm = ({ id, setSubmitted, submitted }) => {
     await AddItinerary(itineraryFormState, id)
     setItineraryFormState(initialState)
     setSubmitted(!submitted)
-    // getItineraries()
   }
 
   const handleChange = (event) => {

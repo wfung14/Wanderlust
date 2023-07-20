@@ -29,20 +29,13 @@ const LocationDetail = ({locationActivities, setLocationActivities, locationNote
     }
   }
 
-console.log(locationNotes)
 
-  // const getItineraries = async () => {
-  //   try {
-  //     let res = await axios.get(`http://localhost:3001/itineraries/location/${id}`)
-  //     setItinerary(res.data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+
+
 
   useEffect(() => {
     getLocations()
-    // getNotes()
+
   }, [submitted])
 
 

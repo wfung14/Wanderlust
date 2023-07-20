@@ -33,7 +33,6 @@
 ### **Screenshots**
 
 ![]()
-ADD PICTURES WHEN DONE
 
 ***
 
